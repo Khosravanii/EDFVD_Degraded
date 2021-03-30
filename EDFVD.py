@@ -42,14 +42,10 @@ def Task_Set():
            i+=1
     return Task_Set
 tasks= Task_Set()
+tasks_show=Task_Set()
 n=len(tasks)
 #print(Len_Task_Set)
-print("TID\tC(LO)\tC(HI)\tD\tP\tL\tRT")
-for i in tasks:
-    print("")
-    for j in i:
-        print(j, end = '\t')
-print("\n")
+
 
 #Calculating X
 def X(tasks,n):
@@ -75,6 +71,23 @@ def X(tasks,n):
         return 1
     print("X is : %s"%round(X,2))
 X=X(tasks,n)
+
+
+def show_Tasks(Task_show,n,X):
+    
+    for i in range(n):
+        if tasks_show[i][5] >0:
+            tasks_show[i].append(X * tasks[i][3])
+        else:
+            tasks_show[i].append('-')
+    return tasks_show
+show=show_Tasks(tasks_show,n,X)
+print("TID\tC(LO)\tC(HI)\tD\tP\tL\tRT\tVD")
+for i in show:
+    print("")
+    for j in i:
+        print(j, end = '\t')
+print("\n")
 
 def tasks_HI():
     tasks=Task_Set()
